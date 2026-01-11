@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        List<Person> plot = new ArrayList<Person>();
+        plot.add(new Person("Repka", "Repka"));
+        plot.add(new Person("Dedka", "Dedku"));
+        plot.add(new Person("Babka", "Babku"));
+        plot.add(new Person("Granddaughter", "Granddaughter"));
+
+        RepkaStory.tell(plot);
+    }
+
+    public interface RepkaItem {
+        String getNamePadezh();
+    }
+
+    public static class Person implements RepkaItem {
+
+        private String name;
+        private String namePadezh;
+
+        public Person(String name, String namePadezh) {
+            this.name = name;
+            this.namePadezh = namePadezh;
+        }
+
+        public void pull(Person person) {
+            System.out.println(name + " for " + person.getNamePadezh());
+        }
+
+        public String getNamePadezh() {
+            return namePadezh;
+        }
+    }
+
+    public static class RepkaStory {
+
+        static void tell(List<Person> items) {
+            for (int i = items.size() - 1; i > 0; i--) {
+                items.get(i).pull(items.get(i - 1));
+            }
+        }
+    }
+}
