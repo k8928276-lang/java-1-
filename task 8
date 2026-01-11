@@ -1,0 +1,11 @@
+public class Solution {
+
+    public static void main(String[] args) {
+        long result = cube(3L);
+        System.out.println(result);
+    }
+
+    public static long cube(long number) {
+        return number * number * number;
+    }
+}
